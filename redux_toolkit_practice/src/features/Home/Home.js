@@ -1,18 +1,18 @@
 import React from "react";
-import Modal from "../../commons/Modals.js";
+import Modal from "../../commons/Modal/Modals.js";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "./homeSlice";
+import { toggleModalOn } from "../../commons/Modal/modalSlice.js";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const modalToggle = useSelector((state) => state.home.modalToggle);
+  const modalToggle = useSelector((state) => state.modal.modalToggle);
 
   return (
-    <h1>
-      HOME PAGE
-      <button onClick={() => dispatch(toggleModal())}>Modal</button>
+    <>
+      <h1>HOME PAGE</h1>
+      <button onClick={() => dispatch(toggleModalOn())}>Modal</button>
       {modalToggle && <Modal />}
-    </h1>
+    </>
   );
 };
 
