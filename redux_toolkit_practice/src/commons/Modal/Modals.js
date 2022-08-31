@@ -12,13 +12,12 @@ const Modal = ({ children }) => {
 
   return (
     <>
-      <div className="modal-background" onClick={closeModal}>
+      <div className="modal-background">
         <div className="modal-container">
           <div className="modal-content">
             <button className="close" onClick={closeModal}>
               X
             </button>
-            hello
             {children}
           </div>
         </div>
