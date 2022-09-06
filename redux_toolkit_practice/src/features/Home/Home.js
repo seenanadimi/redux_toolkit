@@ -5,13 +5,13 @@ import { toggleModalOn } from "../../commons/Modal/modalSlice.js";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const modalToggle = useSelector((state) => state.modal.modalToggle);
+  const toggle = useSelector((state) => state.modal.modalToggle);
 
   return (
     <>
       <h1>HOME PAGE</h1>
       <button onClick={() => dispatch(toggleModalOn())}>Modal</button>
-      {modalToggle && <Modal />}
+      {toggle && <Modal />}
     </>
   );
 };

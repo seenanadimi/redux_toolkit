@@ -10,11 +10,12 @@ export const profileSlice = createSlice({
   initialState,
   reducers: {
     newPost: (state, action) => {
+      const random = Math.random() * 100;
+      const roundNum = Math.floor(random);
       const newPost = {
-        id: Math.random() * 100,
+        id: roundNum,
         text: action.payload,
       };
-      // let newPost = [...state.post, action.payload];
       state.post.push(newPost);
       state.count += 1;
     },
@@ -22,9 +23,13 @@ export const profileSlice = createSlice({
       state.post = state.post.filter((post) => post.id !== action.payload);
       state.count -= 1;
     },
-    editPost(state, action) {
-      let post = [...state.post, action.payload];
-      state.post = post;
+    editPost: (state, action) => {
+      if (action.payload && action.payload.id) {
+        const editIndex = state.post.findIndex(
+          (post) => post.id === action.payload.id
+        );
+        state.post[editIndex].text = action.payload.text;
+      }
     },
   },
 });

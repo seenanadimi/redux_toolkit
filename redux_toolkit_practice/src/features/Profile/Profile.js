@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../commons/Modal/Modals.js";
 import CommentForm from "./CommentForm.js";
 import { editPost, deletePost } from "./profileSlice.js";
+import Post from "./Post.js";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -11,11 +12,7 @@ const Profile = () => {
   const toggle = useSelector((state) => state.modal.modalToggle);
 
   const postMap = posts.map((p, index) => (
-    <div key={index} style={{ display: "flex", justifyContent: "center" }}>
-      <p>{p.text}</p>
-      <button onClick={() => dispatch(deletePost(p.id))}>Delete</button>
-      {/* <button onClick={() => dispatch(editPost())}>edit</button> */}
-    </div>
+    <Post key={index} text={p.text} id={p.id} req={p} />
   ));
 
   return (
